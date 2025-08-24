@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  tts-bot:
+    build: .
+    container_name: lpe4-tts-bot
+    restart: unless-stopped
+    volumes:
+      - ./logs:/app/logs
+      - ./user_settings.json:/app/user_settings.json
+      - ./config.py:/app/config.py
+    environment:
+      - PYTHONUNBUFFERED=1
+    networks:
+      - tts-network
+
+  # Опциональный сервис для мониторинга (если понадобится)
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   container_name: tts-prometheus
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml
+  #   networks:
+  #     - tts-network
+
+networks:
+  tts-network:
+    driver: bridge
+
+volumes:
+  logs:
+  user_settings:

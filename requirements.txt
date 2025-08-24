@@ -1,0 +1,7 @@
+pyTelegramBotAPI==4.14.0
+elevenlabs==0.2.26
+flask==2.3.3
+flask-socketio==5.3.6
+python-socketio==5.8.0
+python-engineio==4.7.1
+requests==2.31.0
